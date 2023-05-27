@@ -1,0 +1,2 @@
+class BingMapsGeocoder():
+    pass

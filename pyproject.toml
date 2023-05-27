@@ -1,0 +1,21 @@
+[tool.poetry]
+name = "tracker-genius"
+version = "0.1.0"
+description = ""
+authors = ["Alex Silva <alesimadev@gmail.com>"]
+readme = "README.md"
+packages = [{include = "tracker_genius"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+django = "^4.2"
+shapely = "^2.0.1"
+requests = "^2.31.0"
+
+
+[tool.poetry.group.dev.dependencies]
+autopep8 = "^2.0.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
