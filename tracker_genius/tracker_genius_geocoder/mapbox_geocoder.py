@@ -5,15 +5,15 @@ from typing import Any, Dict, Optional, List
 
 
 class MapboxGeocoder(JsonGeocoder):
-    def __init__(self, key: str, address_format: Optional[AddressFormat]) -> None:
+    def __init__(self, key: str = None, address_format: Optional[AddressFormat] = None) -> None:
         super().__init__(self.format_url(key), address_format)
 
     @staticmethod
-    def format_url(key: str) -> str:
-        return "https://api.mapbox.com/geocoding/v5/mapbox.places/%f,%f.json?access_token=" + key
+    def format_url(key: str = None) -> str:
+        return 'https://api.mapbox.com/geocoding/v5/mapbox.places/%f,%f.json?access_token=' + key
 
     def parse_address(self, json: Dict[str, Any]) -> Optional[Address]:
-        features: List[Dict[str, Any]] = json.get("features", [])
+        features: List[Dict[str, Any]] = json.get('features', [])
 
         if len(features):
             address = Address()
