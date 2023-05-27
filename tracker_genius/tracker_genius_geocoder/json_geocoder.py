@@ -30,13 +30,13 @@ class JsonGeocoder(Geocoder):
             formatted_address = self.address_format.format(
                 address) if self.address_format else None
             if formatted_address is not None:
-                if cache.get(f"{latitude}:{longitude}") is None:
-                    cache.set(f"{latitude}:{longitude}", formatted_address)
+                if cache.get(f'{latitude}:{longitude}') is None:
+                    cache.set(f'{latitude}:{longitude}', formatted_address)
                 if callback is not None:
                     callback.on_success(formatted_address)
                 return formatted_address
         else:
-            msg = f"Empty address. Error: {self.parse_error(json)}"
+            msg = f'Empty address. Error: {self.parse_error(json)}'
             if callback is not None:
                 callback.on_error(msg)
             else:
@@ -45,8 +45,8 @@ class JsonGeocoder(Geocoder):
         return None
 
     def get_address(self, latitude: float, longitude: float, callback: Geocoder.ReverseGeocoderCallback = None) -> Optional[str]:
-        if cache.get(f"{latitude}:{longitude}") is not None:
-            cached_address: str = cache.get(f"{latitude}:{longitude}")
+        if cache.get(f'{latitude}:{longitude}') is not None:
+            cached_address: str = cache.get(f'{latitude}:{longitude}')
             if callback:
                 callback.on_success(cached_address)
             return cached_address
@@ -61,7 +61,7 @@ class JsonGeocoder(Geocoder):
             json = response.json()
             return self.handle_response(latitude, longitude, json, callback)
         else:
-            logger.warning("Geocoder network error")
+            logger.warning('Geocoder network error')
 
         return None
 

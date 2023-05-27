@@ -11,14 +11,14 @@ class NominatimGeocoder(JsonGeocoder):
     @staticmethod
     def format_url(url: str = None, key: str = None, language: str = None) -> str:
         if url is None:
-            url = "https://nominatim.openstreetmap.org/reverse"
-        url += "?format=json&zoom=18&addressdetails=1"
+            url = 'https://nominatim.openstreetmap.org/reverse'
+        url += '?format=json&zoom=18&addressdetails=1'
 
         if key is not None:
-            url += "&key=" + key
+            url += '&key=' + key
 
         if language is not None:
-            url += "&accept-language=" + language
+            url += '&accept-language=' + language
 
         return url
 
@@ -28,34 +28,34 @@ class NominatimGeocoder(JsonGeocoder):
         if bool(result):
             address = Address()
 
-            if "display_name" in json:
-                address.formatted_address = json["display_name"]
+            if 'display_name' in json:
+                address.formatted_address = json['display_name']
 
-            if "house_number" in result:
-                address.house = result["house_number"]
-            if "road" in result:
-                address.street = result["road"]
-            if "suburb" in result:
-                address.suburb = result["suburb"]
+            if 'house_number' in result:
+                address.house = result['house_number']
+            if 'road' in result:
+                address.street = result['road']
+            if 'suburb' in result:
+                address.suburb = result['suburb']
 
-            if "village" in result:
-                address.settlement = result["village"]
-            elif "town" in result:
-                address.settlement = result["town"]
-            elif "city" in result:
-                address.settlement = result["city"]
+            if 'village' in result:
+                address.settlement = result['village']
+            elif 'town' in result:
+                address.settlement = result['town']
+            elif 'city' in result:
+                address.settlement = result['city']
 
-            if "state_district" in result:
-                address.district = result["state_district"]
-            elif "region" in result:
-                address.district = result["region"]
+            if 'state_district' in result:
+                address.district = result['state_district']
+            elif 'region' in result:
+                address.district = result['region']
 
-            if "state" in result:
-                address.state = result["state"]
-            if "country_code" in result:
-                address.country = result["country_code"].upper()
-            if "postcode" in result:
-                address.postcode = result["postcode"]
+            if 'state' in result:
+                address.state = result['state']
+            if 'country_code' in result:
+                address.country = result['country_code'].upper()
+            if 'postcode' in result:
+                address.postcode = result['postcode']
 
             return address
 

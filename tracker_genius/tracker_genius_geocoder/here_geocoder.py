@@ -11,19 +11,19 @@ class HereGeocoder(JsonGeocoder):
     @staticmethod
     def format_url(url: str = None, id: str = None, key: str = None, language: str = None) -> str:
         if url is None:
-            url = "https://reverse.geocoder.ls.hereapi.com/6.2/reversegeocode.json"
-        url += "?mode=retrieveAddresses&maxresults=1"
-        url += "&prox=%f,%f,0"
+            url = 'https://reverse.geocoder.ls.hereapi.com/6.2/reversegeocode.json'
+        url += '?mode=retrieveAddresses&maxresults=1'
+        url += '&prox=%f,%f,0'
 
         if id is not None:
-            url += "&app_id=" + id
+            url += '&app_id=' + id
 
         if key is not None:
-            url += "&app_code=" + key
-            url += "&api_key" + key
+            url += '&app_code=' + key
+            url += '&api_key' + key
 
         if language is not None:
-            url += "&language=" + language
+            url += '&language=' + language
 
         return url
 

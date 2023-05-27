@@ -10,25 +10,25 @@ class GoogleGeocoder(JsonGeocoder):
 
     @staticmethod
     def format_url(key: str, language: str) -> str:
-        url = "https://maps.googleapis.com/maps/api/geocode/json?latlng=%f,%f"
+        url = 'https://maps.googleapis.com/maps/api/geocode/json?latlng=%f,%f'
 
         if key is not None:
-            url += "&key=" + key
+            url += '&key=' + key
 
         if language is not None:
-            url += "&language=" + language
+            url += '&language=' + language
 
         return url
 
     def parse_address(self, json: Dict[str, Any]) -> Optional[Address]:
-        results: List[Dict[str, Any]] = json.get("results", [])
+        results: List[Dict[str, Any]] = json.get('results', [])
 
         if len(results):
             address = Address()
 
             result: Dict[str, Any] = results[0]
             components: List[Dict[str, Any]] = result.get(
-                "address_components", [])
+                'address_components', [])
 
             if 'formatted_address' in result:
                 address.formatted_address = result['formatted_address']
