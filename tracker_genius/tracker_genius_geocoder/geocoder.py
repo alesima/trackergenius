@@ -13,7 +13,7 @@ class Geocoder(ABC):
             pass
 
     @abstractmethod
-    def get_address(self, latitude: float, longitude: float, callback: Optional[ReverseGeocoderCallback] = None) -> Optional[str]:
+    def get_address(self, latitude: float, longitude: float, callback: ReverseGeocoderCallback) -> Optional[str]:
         pass
 
     @abstractmethod
